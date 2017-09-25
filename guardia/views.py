@@ -16,6 +16,15 @@ def registro(request):
     second = guardia.objects.all()
     return render(request, "registro.html", {"guardias": second})
 
+def salida(request):
+    tercero = guardia.objects.all()
+    return render(request, "salidas.html", {"guardias": tercero})
+
+#def familia(request):
+ #   cuarto = guardia.objects.all()
+  #  return render(request, "familias.html", {"guardias": cuarto})
+
+
 def upload(request):
     name=request.POST['nombre']
     new=guardia(nombre=name)

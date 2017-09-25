@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^index/$', index, name="index"),
     url(r'^upload$', upload, name="upload"),
     url(r'^registro/$', registro, name="registros"),
+    url(r'^salida/$', salida, name="salidas"),
+   # url(r'^familia/$', famila, name="familias"),
 
 
 ]
