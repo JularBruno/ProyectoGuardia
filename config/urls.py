@@ -19,7 +19,9 @@ from guardia.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', index, name="index"),
+    url(r'^index/$', index, name="index"),
     url(r'^upload$', upload, name="upload"),
-    
+    url(r'^registro/$', registro, name="registros"),
+
+
 ]

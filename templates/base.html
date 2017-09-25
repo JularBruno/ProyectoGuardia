@@ -1,17 +1,139 @@
-<HTML>
-<HEAD>
-	<TITLE>{% block title %}{% endblock title %}</TITLE>
-</HEAD>
-<BODY>
-	<ul>
-		{% for guardia in guardias %}
-		<li>{{ guardia.nombre }}</li>
-		{% endfor %}
-	</ul>
-	<form action="{% url 'upload' %}" method="POST">
-		{% csrf_token %}
-		<input type="text" name="nombre">
-		<input type="submit">
-	</form>
-</BODY>
-</HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            ::placeholder { color: blue; }
+
+            .center {
+                margin: auto;
+                width: 13%;
+
+            }
+
+            .bordes {
+                margin: auto;
+                width: 13%;
+                border: 1px solid lightblue;
+                padding: 0.1px;
+            }
+
+            .inputs{
+                width: 30%
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <nav class="cyan lighten-2">
+            <div class="nav-wrapper ">
+                <a href="#" class="brand-logo right black-text">User</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="sass.html black-text" class="black-text">Entradas</a></li>
+                    <li><a href="badges.html" class="black-text">Salidas</a></li>
+                    
+                    <li><a href="{% url 'registros' %}" class="black-text">Registro</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row">
+            <form class="col s12">
+                <div class="input-field col s6 inputs">
+                    <input placeholder="Nombre & Apellido" id="name" type="text" class="validate">
+                </div>
+
+                <div class="input-field col s6">
+                    <input placeholder="DNI" type="text" class="validate">
+                </div>
+
+                <div class="input-field col s6">
+                    <input placeholder="Familia Propietaria" type="text" class="validate">
+                </div>
+
+                <div class="input-field col s6 right">                             
+                    <input placeholder="Manzana" type="text" class="validate"> 
+                </div>
+                <div class="input-field col s6 right">
+                    <input placeholder="Lote" type="text" class="validate">
+                </div> 
+            </form>
+        </div>
+
+        <div class="row" id="segundo">
+            <div class="center">
+
+                <p>
+                    <input checked type="checkbox" id="chk_vehiculo" />
+                    <label for="chk_vehiculo">Vehículo</label>
+                </p>
+                <br>
+            </div>
+            <div class="input-field col s6">
+                <input placeholder="Modelo del Vehículo"   id="modelo-vehiculo" type="text" class="validate">
+            </div>
+            <div class="input-field col s6 row">
+                <input placeholder="Patente" id="patente" type="text" class="validate">
+            </div>
+        </div>
+
+        <select class="browser-default bordes">
+            <option value="" disabled selected>Motivo del ingraso</option>
+            <option value="1">visita</option>
+            <option value="2">servicio</option>
+        </select>
+        <br>
+
+
+
+        <div class="center-align">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div> 
+        <!--Import jQuery before materialize.js-->
+
+
+    </body>
+
+    <script>
+
+        $('#chk_vehiculo').on('change',function(){
+
+            if (this.checked){
+                $('#modelo-vehiculo').attr('disabled',false);
+            }else{
+                $('#modelo-vehiculo').attr('disabled',true);
+            }
+        });
+
+        $('#chk_vehiculo').on('change',function(){
+
+            if (this.checked){
+                $('#patente').attr('disabled',false);
+            }else{
+                $('#patente').attr('disabled',true);
+            }
+        });
+
+
+
+
+
+
+    </script>
+</html>
