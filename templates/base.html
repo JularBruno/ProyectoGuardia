@@ -7,6 +7,8 @@
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Compiled and minified JavaScript -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -14,6 +16,18 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+        <!-- Compiled and minified CSS -->
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+
         <style>
             ::placeholder { color: blue; }
 
@@ -26,84 +40,124 @@
             .bordes {
                 margin: auto;
                 width: 13%;
-                border: 1px solid lightblue;
-                padding: 0.1px;
+                padding: 1px;
+                color: cadetblue;
             }
 
             .inputs{
                 width: 30%
             }
 
+            .boton{
+                width: 60px ;
+
+            }
+            .b {
+                font-weight: bold;
+            }
+
+
+            @media only screen and (min-width: 601px){
+                nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+                    height: 50px;
+                    line-height: 50px;
+                }
+            }
+
+            .row {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 10px;
+            }
+
         </style>
     </head>
 
-    <body>
-        <nav class="cyan lighten-2">
+    <body >
+
+
+        <nav class="cyan lighten-2 b" >
             <div class="nav-wrapper ">
-                <a href="#" class="brand-logo right black-text">User</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="{% url 'index' %}" class="black-text">Entradas</a></li>
-                    <li><a href="{% url 'salidas' %}" class="black-text">Salidas</a></li>
-                    <li><a href="{% url 'registros' %}" class="black-text">Registro</a></li>
-                 
-                    
-                </ul>
+
+                <a href="{% url 'logout' %}" class="waves-effect right" data-activates="userdrop"><i class="material-icons left">input</i>{{user|upper}}</a>
+
+                <div class="nav-content">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="{% url 'index' %}" class="wite-text font-weight: bold">Entradas</a></li>
+                        <li><a href="{% url 'salidas' %}" class="wite-text">Salidas</a></li>
+                        <li><a href="{% url 'registros' %}" class="wite-text">Registro</a></li>
+
+
+                    </ul>
+                </div>
             </div>
+
         </nav>
 
-        <div class="row">
-            <form class="col s12">
+        <div class="row !important">
+            <form class="col s12 ">
                 <div class="input-field col s6 inputs">
-                    <input placeholder="Nombre & Apellido" id="name" type="text" class="validate">
+                    <input placeholder="Nombre & Apellido"  id="name" type="text" class="validate datos">
                 </div>
 
                 <div class="input-field col s6">
-                    <input placeholder="DNI" type="text" class="validate">
+                    <input placeholder="DNI" type="text" class="validate datos">
                 </div>
 
                 <div class="input-field col s6">
-                    <input placeholder="Familia Propietaria" type="text" class="validate">
+                    <input placeholder="Familia Propietaria" type="text" class="validate datos">
                 </div>
 
                 <div class="input-field col s6 right">                             
-                    <input placeholder="Manzana" type="text" class="validate"> 
+                    <input placeholder="Manzana" type="text" class="validate datos"> 
                 </div>
                 <div class="input-field col s6 right">
-                    <input placeholder="Lote" type="text" class="validate">
+                    <input placeholder="Lote" type="text" class="validate datos">
                 </div> 
             </form>
         </div>
 
         <div class="row" id="segundo">
             <div class="center">
-
                 <p>
                     <input checked type="checkbox" id="chk_vehiculo" />
                     <label for="chk_vehiculo">Vehículo</label>
                 </p>
-                <br>
+
             </div>
-            <div class="input-field col s6">
-                <input placeholder="Modelo del Vehículo"   id="modelo-vehiculo" type="text" class="validate">
-            </div>
-            <div class="input-field col s6 row">
-                <input placeholder="Patente" id="patente" type="text" class="validate">
-            </div>
+            <form class="col s12">
+
+                <div class="input-field col s6">
+                    <input placeholder="Marca"   id="marca" type="text" class="validate autos">
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Nombre"   id="nombre" type="text" class="validate autos">
+                </div>
+                <div class="input-field col s6 row">
+                    <input placeholder="Patente" id="patente" type="text" class="validate autos">
+                </div>
+                <a class="waves-effect waves-light btn width=13% reset1"><i class="boton material-icons fa fa-remove align=rigth"></i></a>
+            </form>
         </div>
 
-        <select class="browser-default bordes">
-            <option value="" disabled selected>Motivo del ingraso</option>
-            <option value="1">visita</option>
-            <option value="2">servicio</option>
-        </select>
-        <br>
+        <div class="input-field bordes">
+            <select>
+                <option value="" disabled selected font: blue;>Motivo del ingreso</option>
+                <option value="1">Visita</option>
+                <option value="2">Servicio</option>
+            </select>
+        </div>
 
 
+        <div class="row">
 
-        <div class="center-align">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-            </button>
+            <div class="center-align">
+                <a class="waves-effect waves-light btn width=13% reset2"><i class="Small material-icons fa fa-car "></i><i class="Small material-icons fa fa-plus "></i></a>
+                <a href="{% url 'index' %}" class="waves-effect waves-light btn width=13%"><i class="Small material-icons">delete</i></a>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div> 
         </div> 
         <!--Import jQuery before materialize.js-->
 
@@ -112,16 +166,28 @@
 
     <script>
 
+        $(".reset1").click(function() {
+            $(".autos").closest('form').find("input[type=text], textarea").val("");
+        });
+        
+        $(".reset2").click(function() {
+            $(".datos").closest('form').find("input[type=text], textarea").val("");
+        });
+
+
         $('#chk_vehiculo').on('change',function(){
 
             if (this.checked){
-                $('#modelo-vehiculo').attr('disabled',false);
+                $('#marca').attr('disabled',false);
             }else{
-                $('#modelo-vehiculo').attr('disabled',true);
+                $('#marca').attr('disabled',true);
             }
-        });
 
-        $('#chk_vehiculo').on('change',function(){
+            if (this.checked){
+                $('#nombre').attr('disabled',false);
+            }else{
+                $('#nombre').attr('disabled',true);
+            }
 
             if (this.checked){
                 $('#patente').attr('disabled',false);
@@ -132,6 +198,23 @@
 
 
 
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+
+
+
+        $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false, // Displays dropdown below the button
+            alignment: 'left', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false // Stops event propagation
+        }
+                                      );
 
 
 

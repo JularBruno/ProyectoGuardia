@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Compiled and minified JavaScript -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -14,8 +15,21 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <!-- Compiled and minified CSS -->
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
         <style> 
-            
+
+            ::placeholder { color: blue; }
+
             table {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
@@ -31,64 +45,124 @@
             tr:nth-child(even) {
                 background-color: #dddddd;
             }
+
+            .b {
+                font-weight: bold;
+            }
+
+            @media only screen and (min-width: 601px){
+                nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+                    height: 50px;
+                    line-height: 50px;
+                }
+            }
+
+
         </style>
     </head>
 
-    <body>
-        <nav class="cyan lighten-2">
-            <div class="nav-wrapper ">
-                <a href="#" class="brand-logo right black-text">User</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="{% url 'index' %}" class="black-text">Entradas</a></li>
-                    <li><a href="{% url 'salidas' %}" class="black-text">Salidas</a></li>
-                    <li><a href="{% url 'registros' %}" class="black-text">Registro</a></li>
-                     
+    <body >
 
-                </ul>
+        <nav class="cyan lighten-2 b">
+            <div class="nav-wrapper ">
+
+                <a href="{% url 'logout' %}" class="waves-effect right" data-activates="userdrop"><i class="material-icons left">input</i>{{user|upper}}</a>
+
+                <div class="nav-content">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="{% url 'index' %}" class="wite-text font-weight: bold">Entradas</a></li>
+                        <li><a href="{% url 'salidas' %}" class="wite-text">Salidas</a></li>
+                        <li><a href="{% url 'registros' %}" class="wite-text">Registro</a></li>
+
+
+                    </ul>
+                </div>
             </div>
+
         </nav>
 
+
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">serch</i>
+                        <input type="text" id="autocomplete-input" placeholder="Buscar" class="autocomplete">
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <table class="highlight">
             <tr>
                 <th>DNI</th>
-                <th>Nombre y apellido</th>
+                <th>Nombre y Apellido</th>
                 <th>Familia Propietaria</th>
                 <th>Manzana</th>
                 <th>Lote</th>
+                <th>Dia/Hora (entrada)</th>
+                <th> Salida </th>
 
             </tr>
             <tr>
                 <td>2342342432</td>
                 <td>Alfreds Futterkiste</td>
                 <td>Germany</td>
+                <td> rfvegvr</td>
+                <td>rvrevrfv </td>
+                <td></td>
+                <td><a class="waves-effect waves-light btn">salio</a></td>
             </tr>
             <tr>
                 <td>3242342342</td>
                 <td>Centro comercial Moctezuma</td>
                 <td>Mexico</td>
+                <td> rfvegvr</td>
+                <td>rvrevrfv </td>
+                <td></td>
+                <td><a class="waves-effect waves-light btn">salio</a></td>
             </tr>
             <tr>
                 <td>234234234234</td>
                 <td>Ernst Handel</td>
                 <td>Austria</td>
+                <td> rfvegvr</td>
+                <td>rvrevrfv </td>
+                <td></td>
+                <td><a class="waves-effect waves-light btn">salio</a></td>
             </tr>
             <tr>
                 <td>435345345345</td>
                 <td>Island Trading</td>
                 <td>UK</td>
+                <td> rfvegvr</td>
+                <td>rvrevrfv </td>
+                <td></td>
+                <td><a class="waves-effect waves-light btn">salio</a></td>
             </tr>
             <tr>
                 <td>420420420</td>
                 <td>Laughing Bacchus Winecellars</td>
                 <td>Canada</td>
+                <td> rfvegvr</td>
+                <td>rvrevrfv </td>
+                <td></td>
+                <td><a class="waves-effect waves-light btn">salio</a></td>
             </tr>
             <tr>
                 <td>420420420</td>
                 <td>Magazzini Alimentari Riuniti</td>
                 <td>Italy</td>
+                <td> rfvegvr</td>
+                <td>rvrevrfv </td>
+                <td></td>
+                <td><a class="waves-effect waves-light btn">salio</a></td>
             </tr>
         </table>
 
     </body>
+ 
+
+
 </html>

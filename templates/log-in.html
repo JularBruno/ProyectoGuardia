@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+        <style>
+
+            ::placeholder { color: blue; }
+
+
+            .row {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 150px;
+            }
+
+            
+
+            .b {
+                font-weight: bold;
+            }
+            @media only screen and (min-width: 601px){
+                nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+                    height: 50px;
+                    line-height: 50px;
+                }
+            }
+
+            .center {
+                height: 220px;
+                width: 40%;
+                margin: auto;
+                border: 3px solid blue;
+                padding: 10px;
+                background-color: powderblue;
+            }
+
+        </style>
+    </head>
+
+    <body style="background-color:skyblue;">
+
+        <nav class="cyan lighten-2 b row !important">
+            <div class="nav-wrapper ">
+
+                <a href="{% url 'logout' %}" class="waves-effect right" data-activates="userdrop"><i class="material-icons left">input</i>{{user|upper}}</a>
+
+                <div class="nav-content">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="{% url 'index' %}" class="wite-text font-weight: bold">Entradas</a></li>
+                        <li><a href="{% url 'salidas' %}" class="wite-text">Salidas</a></li>
+                        <li><a href="{% url 'registros' %}" class="wite-text">Registro</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="center">
+            <div class="row !important" >
+                <div class="input-field col s12">
+                    <form action="{% url 'login' %}" method="POST" accept-charset="utf-8">
+                        {% csrf_token %}
+                        <i class="material-icons prefix" style="font-size: 40px">account_circle</i>
+                        <input type="Text" name="username" class="solid" placeholder="Username"><br>
+                        <i class="material-icons prefix" style="font-size: 40px">person_pin</i>
+                        <input type="Password" name="password" placeholder="Password"><br>
+                        <button class="btn waves-effect waves-white white-text"  type="submit ">LogIn</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+</html>
