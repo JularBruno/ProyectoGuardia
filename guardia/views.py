@@ -57,6 +57,7 @@ def loginv(request):
     if user != None:
         login(request, user)
         return redirect('index')
+    
 
 def logoutv(request):
     logout(request)
